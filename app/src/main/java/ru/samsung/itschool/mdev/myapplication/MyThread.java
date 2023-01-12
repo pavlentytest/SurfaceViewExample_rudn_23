@@ -3,7 +3,10 @@ package ru.samsung.itschool.mdev.myapplication;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.SurfaceHolder;
+
+import java.util.Random;
 
 public class MyThread extends Thread {
 
@@ -50,7 +53,9 @@ public class MyThread extends Thread {
     public void drawCircle(Canvas canvas) {
         int x = canvas.getWidth()/2;
         int y = canvas.getHeight()/2;
+        Random r = new Random();
         canvas.drawColor(Color.parseColor("#000000")); // черный
+        paint.setColor(Color.rgb(r.nextInt(255),r.nextInt(255),r.nextInt(255)));
         canvas.drawCircle(x,y, (float)(500*Math.random()), paint);
     }
 }
