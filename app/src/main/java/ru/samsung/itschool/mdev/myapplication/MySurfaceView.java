@@ -8,13 +8,18 @@ import androidx.annotation.NonNull;
 
 public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback {
 
+    private MyThread myThread;
+
     public MySurfaceView(Context context) {
         super(context);
+        getHolder().addCallback(this);
     }
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
         // старт потока отрисовки
+        myThread = new MyThread(getHolder());
+        myThread.start();
     }
 
     @Override
